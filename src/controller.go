@@ -7,10 +7,6 @@ import (
 	"os"
 )
 
-func main() {
-	var cognateDict = getData()
-}
-
 // Convert cognate list into a map
 func getData() map[string]string {
 	jsonFile, err := os.Open("data/span.json")
@@ -28,3 +24,15 @@ func getData() map[string]string {
 	return cognates
 
 }
+
+// func translateCognates(cognates map[string]string, input string) {
+// 	output := input
+// 	for i := 0; i < len(input); i++ {
+// 		elem, ok := cognates[input[i]]
+
+// 		if ok {
+
+// 		}
+
+// 	}
+// }
