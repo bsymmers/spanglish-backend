@@ -5,11 +5,12 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"unicode"
 )
 
 // Convert cognate list into a map
 func getData() map[string]string {
-	jsonFile, err := os.Open("data/span.json")
+	jsonFile, err := os.Open("../data/span.json")
 
 	if err != nil {
 		fmt.Println(err)
@@ -25,14 +26,43 @@ func getData() map[string]string {
 
 }
 
-// func translateCognates(cognates map[string]string, input string) {
-// 	output := input
-// 	for i := 0; i < len(input); i++ {
-// 		elem, ok := cognates[input[i]]
+func wordProcessor(st string) []string {
+	words := []string{}
+	placeholder := ""
+	for _, element := range st {
+		if element == ' ' {
+			if placeholder != "" {
+				words = append(words, placeholder)
+				placeholder = ""
+			}
+		} else if unicode.IsPunct(element) {
+			words = append(words, placeholder, string(element))
+			placeholder = ""
+		} else {
+			placeholder += string(element)
+		}
 
-// 		if ok {
+	}
+	return words
 
-// 		}
+}
 
-// 	}
-// }
+func handleTranslation(st sourceText) {
+	var cognates map[string]string
+	retString := ""
+	if st.Source == "Spanish" && st.Target == "English" {
+		cognates = sp_cognates
+	} else {
+		cognates = nil
+	}
+
+	words := wordProcessor(st.PostContent)
+	for _, word := range words {
+		if val, ok := cognates[word]; ok {
+			retString += val + " "
+		} else {
+			retString += word + " "
+		}
+	}
+	println(retString)
+}

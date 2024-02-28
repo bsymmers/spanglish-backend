@@ -8,9 +8,9 @@ import (
 )
 
 type sourceText struct {
-	Source      string `form:"source"`
-	Target      string `form:"target"`
-	PostContent string `form:"postContent"`
+	Source      string `form:"source" binding:"required"`
+	Target      string `form:"target" binding:"required"`
+	PostContent string `form:"postContent" binding:"required"`
 }
 
 func routing() {
@@ -33,4 +33,6 @@ func postsourceText(c *gin.Context) {
 
 	// DO something with request body thats now store in newSourceText
 	c.IndentedJSON(http.StatusAccepted, newSourceText.PostContent)
+	handleTranslation(newSourceText)
+
 }

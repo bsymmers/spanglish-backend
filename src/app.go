@@ -1,7 +1,8 @@
 package main
 
+var sp_cognates map[string]string
+
 func main() {
-	// var cognateDict = getData()
-	// translateCognates(cognateDict, "This is a sentance")
+	sp_cognates = getData()
 	routing()
 }
