@@ -8,8 +8,8 @@ import (
 )
 
 type sourceText struct {
-	Source      string `form:"source" binding:"required"`
-	Target      string `form:"target" binding:"required"`
+	Source      string `form:"Source" binding:"required"`
+	Target      string `form:"Target" binding:"required"`
 	PostContent string `form:"postContent" binding:"required"`
 }
 
@@ -32,7 +32,6 @@ func postsourceText(c *gin.Context) {
 	}
 
 	// DO something with request body thats now store in newSourceText
-	c.IndentedJSON(http.StatusAccepted, newSourceText.PostContent)
-	handleTranslation(newSourceText)
+	c.IndentedJSON(http.StatusAccepted, handleTranslation(newSourceText))
 
 }

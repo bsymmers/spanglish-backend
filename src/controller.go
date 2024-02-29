@@ -43,11 +43,12 @@ func wordProcessor(st string) []string {
 		}
 
 	}
+	words = append(words, placeholder)
 	return words
 
 }
 
-func handleTranslation(st sourceText) {
+func handleTranslation(st sourceText) string {
 	var cognates map[string]string
 	retString := ""
 	if st.Source == "Spanish" && st.Target == "English" {
@@ -64,5 +65,5 @@ func handleTranslation(st sourceText) {
 			retString += word + " "
 		}
 	}
-	println(retString)
+	return retString[:len(retString)-1]
 }
