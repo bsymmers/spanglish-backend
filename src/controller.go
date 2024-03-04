@@ -8,9 +8,15 @@ import (
 	"unicode"
 )
 
+type retTuple struct {
+	respCode int
+	retStr   string
+}
+
 // Convert cognate list into a map
-func getData() map[string]string {
-	jsonFile, err := os.Open("../data/span.json")
+func getData(language string) map[string]string {
+	path := "../data/" + language + ".json"
+	jsonFile, err := os.Open(path)
 
 	if err != nil {
 		fmt.Println(err)
@@ -21,7 +27,6 @@ func getData() map[string]string {
 
 	var cognates map[string]string
 	json.Unmarshal(byteVal, &cognates)
-	fmt.Println(cognates["athletic"])
 	return cognates
 
 }
@@ -48,14 +53,16 @@ func wordProcessor(st string) []string {
 
 }
 
-func handleTranslation(st sourceText) string {
-	var cognates map[string]string
+func handleTranslation(st sourceText) retTuple {
+	// var cognates map[string]string
 	retString := ""
-	if st.Source == "Spanish" && st.Target == "English" {
-		cognates = sp_cognates
-	} else {
-		cognates = nil
+	stString := st.Source[:2] + "-" + st.Target[:2]
+	cognatesAddr, ok := languageMap[stString]
+
+	if !ok {
+		return retTuple{400, ""}
 	}
+	cognates := *cognatesAddr
 
 	words := wordProcessor(st.PostContent)
 	for _, word := range words {
@@ -65,5 +72,5 @@ func handleTranslation(st sourceText) string {
 			retString += word + " "
 		}
 	}
-	return retString[:len(retString)-1]
+	return retTuple{200, retString[:len(retString)-1]}
 }

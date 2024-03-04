@@ -32,6 +32,7 @@ func postsourceText(c *gin.Context) {
 	}
 
 	// DO something with request body thats now store in newSourceText
-	c.IndentedJSON(http.StatusAccepted, handleTranslation(newSourceText))
+	response := handleTranslation(newSourceText)
+	c.IndentedJSON(response.respCode, response.retStr)
 
 }
