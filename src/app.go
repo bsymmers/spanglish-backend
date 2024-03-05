@@ -16,6 +16,13 @@ var languageMap = map[string]*map[string]string{
 	"En-It": &enit_cognates,
 }
 
+var deeplMap = map[string]string{
+	"English": "EN",
+	"Spanish": "ES",
+	"French":  "FR",
+	"Italian": "IT",
+}
+
 func main() {
 	ensp_cognates = getData("En-Sp")
 	enfe_cognates = getData("En-Fr")
