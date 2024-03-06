@@ -2,3 +2,15 @@
 data/extract.py
 ml/bin
 ml/lib
+ml/bin/activate
+ml/bin/activate.csh
+ml/bin/activate.fish
+ml/bin/Activate.ps1
+ml/bin/f2py
+ml/bin/pip
+ml/bin/pip3
+ml/bin/pip3.11
+ml/bin/python
+ml/bin/python3
+ml/bin/python3.11
+ml/pyvenv.cfg
