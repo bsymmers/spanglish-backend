@@ -1,4 +1,5 @@
 ## **Cognate Translator Backend**
+[Frontend](https://github.com/bsymmers/cognate-translator-frontend)
 
 This project serves as a very slim backend designed to work with the Cognate Translator frontend to facilitate the translation process. 
 
