@@ -1,0 +1,13 @@
+syntax = "proto3";
+option go_package = "./gprc";
+service LanguageDetect {
+    rpc GetLanguage(LanRequest) returns (LanReply);
+}
+
+message LanRequest {
+    string text = 1;
+}
+
+message LanReply {
+    string response = 1;
+}
