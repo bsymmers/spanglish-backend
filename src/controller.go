@@ -44,6 +44,7 @@ func getData(language string) map[string]string {
 
 }
 
+// Process given input string into words so that we can identify cognates
 func wordProcessor(st string) []string {
 	words := []string{}
 	placeholder := ""
@@ -66,6 +67,7 @@ func wordProcessor(st string) []string {
 
 }
 
+// Check if a given word is in the cognates list and if it is add it to the return string
 func handleTranslation(st sourceText) retTuple {
 	retString := ""
 	stString := st.Source[:2] + "-" + st.Target[:2]
