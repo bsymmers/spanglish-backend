@@ -24,12 +24,12 @@ var deeplMap = map[string]string{
 }
 
 func main() {
-	ensp_cognates = getData("En-Sp")
-	enfe_cognates = getData("En-Fr")
-	iten_cognates = getData("It-En")
-	spen_cognates = getData("Sp-En")
-	fren_cognates = getData("Fr-En")
-	enit_cognates = getData("En-It")
+	ensp_cognates = getData("EN-SP")
+	enfe_cognates = getData("EN-FR")
+	iten_cognates = getData("IT-EN")
+	spen_cognates = getData("SP-EN")
+	fren_cognates = getData("FR-EN")
+	enit_cognates = getData("EN-IT")
 
 	routing()
 }
